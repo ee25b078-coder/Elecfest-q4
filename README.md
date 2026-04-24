@@ -35,7 +35,7 @@ $$H(s) = \frac{1}{0.025s + 1}$$
 
 ### Circuit Definition
 * **Input:** $v_{in}(t)$
-* **Output:** $v_{out}(t)$ (taken across $C_3$)
+* **Output:** $v_{out}(t)$ (taken across $C_2$)
 * **Intermediate Node:** $v_x(t)$ (between $C_1$, $R_1$, and $R_2$)
 
 ### Time-Domain Differential Equations
@@ -43,32 +43,32 @@ Applying Kirchhoff's Current Law (KCL) at node $v_x$:
 $$C_1 \frac{d(v_{in}(t) - v_x(t))}{dt} = \frac{v_x(t)}{R_1} + \frac{v_x(t) - v_{out}(t)}{R_2}$$
 
 Applying KCL at node $v_{out}$:
-$$\frac{v_x(t) - v_{out}(t)}{R_2} = C_3 \frac{dv_{out}(t)}{dt}$$
+$$\frac{v_x(t) - v_{out}(t)}{R_2} = C_2 \frac{dv_{out}(t)}{dt}$$
 
 Isolate $v_x(t)$ from the second equation:
-$$v_x(t) = v_{out}(t) + R_2 C_3 \frac{dv_{out}(t)}{dt}$$
+$$v_x(t) = v_{out}(t) + R_2 C_2 \frac{dv_{out}(t)}{dt}$$
 
 Differentiate $v_x(t)$ with respect to time:
-$$\frac{dv_x(t)}{dt} = \frac{dv_{out}(t)}{dt} + R_2 C_3 \frac{d^2v_{out}(t)}{dt^2}$$
+$$\frac{dv_x(t)}{dt} = \frac{dv_{out}(t)}{dt} + R_2 C_2 \frac{d^2v_{out}(t)}{dt^2}$$
 
 Substitute $v_x(t)$ and its derivative into the first KCL equation, and multiply by $R_1$:
-$$R_1 C_1 \frac{dv_{in}(t)}{dt} - R_1 C_1 \left( \frac{dv_{out}(t)}{dt} + R_2 C_3 \frac{d^2v_{out}(t)}{dt^2} \right) = v_{out}(t) + R_2 C_3 \frac{dv_{out}(t)}{dt} + R_1 C_3 \frac{dv_{out}(t)}{dt}$$
+$$R_1 C_1 \frac{dv_{in}(t)}{dt} - R_1 C_1 \left( \frac{dv_{out}(t)}{dt} + R_2 C_2 \frac{d^2v_{out}(t)}{dt^2} \right) = v_{out}(t) + R_2 C_2 \frac{dv_{out}(t)}{dt} + R_1 C_2 \frac{dv_{out}(t)}{dt}$$
 
 Rearranging yields the second-order ODE:
-$$R_1 R_2 C_1 C_3 \frac{d^2v_{out}(t)}{dt^2} + (R_1 C_1 + R_2 C_3 + R_1 C_3) \frac{dv_{out}(t)}{dt} + v_{out}(t) = R_1 C_1 \frac{dv_{in}(t)}{dt}$$
+$$R_1 R_2 C_1 C_2 \frac{d^2v_{out}(t)}{dt^2} + (R_1 C_1 + R_2 C_2 + R_1 C_2) \frac{dv_{out}(t)}{dt} + v_{out}(t) = R_1 C_1 \frac{dv_{in}(t)}{dt}$$
 
 ### S-Domain Transfer Function
 Apply the Laplace transform assuming zero initial conditions:
-$$R_1 R_2 C_1 C_3 s^2 V_{out}(s) + (R_1 C_1 + R_2 C_3 + R_1 C_3) s V_{out}(s) + V_{out}(s) = R_1 C_1 s V_{in}(s)$$
+$$R_1 R_2 C_1 C_2 s^2 V_{out}(s) + (R_1 C_1 + R_2 C_2 + R_1 C_2) s V_{out}(s) + V_{out}(s) = R_1 C_1 s V_{in}(s)$$
 
 Factor out $V_{out}(s)$ to find the ratio $H(s)$:
-$$V_{out}(s) \left[ s^2 (R_1 R_2 C_1 C_3) + s (R_1 C_1 + R_2 C_3 + R_1 C_3) + 1 \right] = V_{in}(s) (s R_1 C_1)$$
+$$V_{out}(s) \left[ s^2 (R_1 R_2 C_1 C_2) + s (R_1 C_1 + R_2 C_2 + R_1 C_2) + 1 \right] = V_{in}(s) (s R_1 C_1)$$
 
-$$H(s) = \frac{s R_1 C_1}{s^2 (R_1 R_2 C_1 C_3) + s (R_1 C_1 + R_2 C_3 + R_1 C_3) + 1}$$
+$$H(s) = \frac{s R_1 C_1}{s^2 (R_1 R_2 C_1 C_2) + s (R_1 C_1 + R_2 C_2 + R_1 C_2) + 1}$$
 
 ### Applied Values
-Given $R_1 = R_2 = 1.6\,\text{k}\Omega$ and $C_1 = C_3 = 10\,\text{nF}$:
-* $R_1 C_1 = R_2 C_3 = R_1 C_3 = 1.6 \times 10^{-5}\,\text{s}$
+Given $R_1 = R_2 = 1.6\,\text{k}\Omega$ and $C_1 = C_2 = 10\,\text{nF}$:
+* $R_1 C_1 = R_2 C_2 = R_1 C_2 = 1.6 \times 10^{-5}\,\text{s}$
 * **$s^2$ coefficient:** $(1.6 \times 10^{-5})^2 = 2.56 \times 10^{-10}\,\text{s}^2$
 * **$s$ coefficient:** $3 \cdot (1.6 \times 10^{-5}) = 4.8 \times 10^{-5}\,\text{s}$
 
